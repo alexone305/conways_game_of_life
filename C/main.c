@@ -1,5 +1,4 @@
 # include <stdio.h>
-# include <stdbool.h>
 
 // Constants
 # define ARR_SIZE 10
@@ -50,22 +49,22 @@ int main()
                              {0,0,0,0,0,0,0,0,0,0},
                              {0,0,0,0,0,0,0,0,0,0}};
     char gen_b[ARR_SIZE][ARR_SIZE];                                          
-    // Declare and set up a tracker to flip between two arrays. True means gen_a will be selected
-    bool pick_a = true;
+    // Declare and set up a tracker to flip between two arrays. Was using bool, but wanted to convert to char to eliminate the bool header.
+    char pick_a = 0x00;
 
     for(int i = 0; i < iterations; i++)
     {
         // Print Iteration number
         printf("Iteration %u:\n\n", i);
         // Determine which array to display
-        if (pick_a)
+        if (pick_a == 0x00)
         {
             // Display current array
             print_2d_array(gen_a, ARR_SIZE, ARR_SIZE);
             // Calculate new array
             next_gen(gen_a, gen_b, ARR_SIZE, ARR_SIZE);
             // Flip boolean
-            pick_a = !pick_a;
+            pick_a = ~pick_a;
             
         }
         else // Repeat but flip the arrays
@@ -75,7 +74,7 @@ int main()
             // Calculate new array
             next_gen(gen_b, gen_a, ARR_SIZE, ARR_SIZE);
             // Flip boolean
-            pick_a = !pick_a;
+            pick_a = ~pick_a;
         }
         //printf("%s", pick_a ? "true" : "false");
 
