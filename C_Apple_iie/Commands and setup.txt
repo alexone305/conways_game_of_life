@@ -1,0 +1,25 @@
+Install CC65, add things to path
+Install make through http://gnuwin32.sourceforge.net/packages/make.htm and http://gnuwin32.sourceforge.net/packages/coreutils.htm
+Add make to path
+Compiling:
+cl65 -t apple2 hello.c -o hello.apple2
+
+
+Linking drivers:
+https://cc65.github.io/doc/co65.html#ss2.1
+
+TGI is located: https://atarilynxdeveloper.wordpress.com/2012/04/19/programming-tutorial-part-5exploring-tgi/
+C:\cc65\target
+
+
+
+
+
+Making a disk image for an emulator:
+Assuming everything is in the same directory:
+
+java -jar ac.jar -p hello.dsk hello.system sys < C:\cc65\target\apple2\util\loader.system
+
+java -jar ac.jar -as hello.dsk hello bin < hello.apple2
+
+Be sure to have both ac.jar and the GUI version of AppleCommander
