@@ -43,6 +43,11 @@ else
 endif
 $(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib
 
+# _____________________________________________________
+# Adding to use TGI/any graphics modes
+# _____________________________________________________
+LDFLAGS    += --start-addr 0x6000
+
 # Path to the directory containing C and ASM sources.
 # Default: src
 SRCDIR :=
